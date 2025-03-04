@@ -44,6 +44,7 @@ def delete_user(user_id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="User not found")
     return {"message": "User deleted successfully"}
 
+
 @app.put("/users/{user_id}", response_model=schemas.User)
 def update_user(user_id: int, user_update: schemas.UserUpdate, db: Session = Depends(get_db)):
     updated_user = crud.update_user(db, user_id, user_update)
